@@ -39,12 +39,23 @@ let tr_x = -73.902426;
 let bl_y = 40.790008;
 let br_y = 40.684653;
 
+let backgroundImage;
+let trainImage
+let walkImage
+let taxiImage
+
+
 
 // Set the map and translate the geopoints into new formatted points
 
 function setup() {
 
 	loadJSON("http://localhost:3000/points", gotData, 'jsonp');
+	backgroundImage = loadImage('image.png');
+	trainImage = loadImage('train.png');
+	walkImage = loadImage('walking.png');
+	taxiImage = loadImage('taxi.png');
+
 
 	w = window.innerWidth;
 	h = window.innerHeight;
@@ -74,10 +85,11 @@ function gotData(data) {
 function draw() {
 
 
-
 	background(220);
+	image(backgroundImage,0,0,w,h);
   	noStroke();
 	fill(0, 0, 0);
+	strokeWeight(3);
 
   	// This for loop drwas the points on the map
   	for (let i = 0; i < mappedPoints.length; i++) {
@@ -90,6 +102,22 @@ function draw() {
 
   // This for loop goes through and draws the static lines
   for (let i = 0; i < pointInc; i++) {
+
+		let currentMovement = LocationData[i].motion[0];
+  		console.log(currentMovement);
+
+ 		if(currentMovement == "train"){
+	    	stroke(134,173,127);
+
+	    } else if (currentMovement == "walking"){
+	    	stroke(220,213,200);
+
+	    } else if (currentMovement == 'driving'){
+	    	stroke(111,143,153);
+
+	    } 
+
+
     line(mappedPoints[i].x, mappedPoints[i].y, mappedPoints[i + 1].x, mappedPoints[i + 1].y);
   }
 
@@ -110,9 +138,27 @@ function draw() {
 	    let percentComplete = speed/pointsDistance;
 	    let x2 = map(percentComplete, 0, 1, mappedPoints[pointInc].x, mappedPoints[pointInc + 1].x);
 	    let y2 = map(percentComplete, 0, 1, mappedPoints[pointInc].y, mappedPoints[pointInc + 1].y);
+
+	    let currentMovement = LocationData[pointInc].motion[0];
+	    console.log(currentMovement);
+
+	    if(currentMovement == "train"){
+
+	    	image(trainImage,w - 150,h - 150,100,100);
+	    	stroke(134,173,127);
+
+	    } else if (currentMovement == "walking"){
+	    	image(walkImage,w - 150,h - 150,100,100);
+	    	stroke(220,213,200);
+
+	    } else if (currentMovement == 'driving'){
+	    	image(taxiImage,w - 150,h - 150,100,100);
+	    	stroke(111,143,153);
+	    } 
+
 	   	line(mappedPoints[pointInc].x, mappedPoints[pointInc].y, x2, y2);
       // This is the speed of our line
-	  	speed += 2.5;
+	  	speed += 1.75;
 	  }
 	}
 

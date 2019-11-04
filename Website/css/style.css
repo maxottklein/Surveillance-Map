@@ -1,0 +1,100 @@
+.Nav {
+
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px;
+  /*border: 1px solid #212b36;*/
+  background-color: rgb(255, 255, 255, .25);
+  z-index: 2;
+} 
+
+
+	#Logo {
+  
+	    text-align: left;
+	    font-size: 25px;
+	    line-height: 50px;
+	    font-family: Apercu Mono;
+	    font-weight: 300;
+	    padding-top: 25px;
+	    padding-left: 40px;
+		/*border: 1px solid #212b36;	*/
+	    }
+
+	#Logo a {
+
+		text-decoration: none;
+		color: #212b36;
+	}
+
+	#About {
+
+	    text-align: right;
+	    font-size: 25px;
+	    line-height: 50px;
+	    font-family: Apercu Mono;
+	    font-weight: 300;
+	    padding-top: 25px;
+	    padding-right: 40px;
+		/*border: 1px solid #212b36;*/	
+	    }
+
+
+	#About a {
+
+		color: #212b36;
+	}
+
+
+.Map {
+
+ position: absolute;
+ left: 0px;
+ top: 0px;
+ right: 0px;
+ bottom:0px;
+ width: 100%;
+ z-index: 1;
+
+}
+
+
+.TextContainer {
+
+ position: absolute;
+ top: 0px;
+ left:0px;
+ right:0px;
+ bottom: 0px;
+ z-index: 1;
+ /*border: 1px solid #212b36;*/
+}
+
+
+.Text{
+
+	position: relative;
+	height: 50vh;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 25vh;
+	margin-bottom: 25vh;
+ 	/*border: 1px solid #212b36;*/
+
+}
+
+
+.Text p {
+
+	text-align: justify;
+	font-size: 15;
+	line-height: 30px;
+	font-family: Apercu Mono;
+	font-weight: 300;
+
+}
